@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('admin.index');
+});
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('categories', CategoryController::class);
 });
