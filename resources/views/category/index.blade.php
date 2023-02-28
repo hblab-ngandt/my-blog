@@ -12,14 +12,40 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#">All Category<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="category/create">Create new category</a>
+                <a class="nav-link" href="category">All Category</a>
               </li>
             </ul>
           </div>
+          <div class="justify-content-end">
+          <a href="category/create" class="btn btn-success">New Category</a>
+        </div>
         </nav>
+        @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($categories as $category)
+            <tr>
+              <th scope="row">{{ $category->id }}</th>
+              <td>{{ $category->name }}</td>
+              <td>
+                <button type="submit" class="btn btn-success">Edit</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
   </div>
   <div style="height: 100vh"></div>

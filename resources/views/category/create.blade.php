@@ -11,18 +11,18 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#">All Category<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="create">Create new category</a>
+                <a class="nav-link" href="/category">All Category<span class="sr-only">(current)</span></a>
               </li>
             </ul>
           </div>
         </nav>
-        <form>
+        <form action="{{ route('category.store') }}" method="POST">
+        @csrf
           <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control" id="create-category" aria-describedby="emailHelp" placeholder="Enter name">
+          <div style="height: 2vh"></div>
+            <label for="name-category">Name</label>
+            <div style="height: 2vh"></div>
+              <input type="text" class="form-control" id="create-category" placeholder="Enter name" name='name' />
           </div>
           <div style="height: 2vh"></div>
           <button type="submit" class="btn btn-primary">Create</button>

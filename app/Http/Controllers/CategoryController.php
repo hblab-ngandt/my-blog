@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\View;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('category.index');
+        $categories = Category::all();
+        return View::make('category.index')->with('categories', $categories);
     }
 
     /**
@@ -24,15 +26,24 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        return View::make('category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //
+        $request->validate([
+            'name' => 'required|max: 255',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/category')->with('success','Category created successfully');
     }
 
     /**
