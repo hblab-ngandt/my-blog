@@ -59,7 +59,7 @@
                                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="/category" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="/category">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Category
                             </a>

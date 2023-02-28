@@ -57,17 +57,29 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
         //
+        return view('category.edit', [
+            'category' => $category
+        ]);
+        // return View::make('category.index');
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
         //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
+        $category->update($request->all());
+
+        return redirect('/category')->with('success', 'Category updated successfully');
     }
 
     /**

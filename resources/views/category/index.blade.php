@@ -8,11 +8,11 @@
   </ol>
   <div class="card mb-4">
       <div class="card-body">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark">
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="category">All Category</a>
+                <a href="category" class="btn btn-primary">All Category</a>
               </li>
             </ul>
           </div>
@@ -39,8 +39,8 @@
               <th scope="row">{{ $category->id }}</th>
               <td>{{ $category->name }}</td>
               <td>
-                <button type="submit" class="btn btn-success">Edit</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
+                <a class="btn btn-danger">Delete</a>
               </td>
             </tr>
             @endforeach
