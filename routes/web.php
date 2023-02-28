@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('categories', CategoryController::class);
+    Route::resource('category', CategoryController::class);
 });
