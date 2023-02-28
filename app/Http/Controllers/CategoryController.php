@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         //
         $categories = Category::all();
-        return View::make('category.index')->with('categories', $categories);
+        return View::make('category.main')->with('categories', $categories);
     }
 
     /**
@@ -63,8 +63,6 @@ class CategoryController extends Controller
         return view('category.edit', [
             'category' => $category
         ]);
-        // return View::make('category.index');
-
     }
 
     /**

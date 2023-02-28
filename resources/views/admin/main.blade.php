@@ -60,8 +60,12 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="/category">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
                                 Category
+                            </a>
+                            <a class="nav-link collapsed" href="/post">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Post
                             </a>
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts.html">

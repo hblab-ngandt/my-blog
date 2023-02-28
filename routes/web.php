@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::resource('category', CategoryController::class);
+    Route::resource('post', PostController::class);
 });
