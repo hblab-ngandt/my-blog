@@ -21,16 +21,18 @@
         </div>
         </nav>
         @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div>
+        @endif
         <table class="table">
           <thead>
             <tr>
               <th scope="col">No</th>
+              <th scope="col">Image</th>
               <th scope="col">Title</th>
               <th scope="col">Author</th>
+              <th scope="col">Short description</th>
               <th scope="col">Date</th>
               <th scope="col">Action</th>
             </tr>
@@ -39,13 +41,14 @@
             @foreach($posts as $post)
             <tr>
               <th scope="row">{{ $post->id }}</th>
+              <td><img src="public/images/{{ $post->image }}" alt="..." class="img-thumbnail" width="80" height="30"> </td>
               <td>{{ $post->title }}</td>
               <td>{{ $post->author }}</td>
+              <td>{{ $post->short_desc }}</td>
               <td>{{ $post->created_at }}</td>
               <td>
               <form action="{{ route('post.destroy', $post->id) }}" method="post">
                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success">Edit</a>
-                
                 @csrf
                 @method('DELETE')
                   <button type="submit" class="btn btn-danger">Delete</button>
