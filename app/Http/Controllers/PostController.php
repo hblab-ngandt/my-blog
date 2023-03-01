@@ -58,26 +58,6 @@ class PostController extends Controller
         ]);
 
         return redirect('/post')->with('success', 'Post updated successfully');
-        // $this->validate(request(), [
-        //     'category_id' => 'required|integer',
-        //     'title' => 'required',
-        //     'author' => 'required',
-        //     'image' => 'required|mimes:jpg,jpeg,png',
-        //     'short_desc' => 'required',
-        //     'description' => 'required',
-        // ]);
-        
-        // $post = new Post;
-        // $post->category_id = request('category_id');
-        // $post->title = request('title');
-        // $post->author = request('author');
-        // $post->image = request()->file('image')->store('public/images');
-        // $post->short_desc = request('short_desc');
-        // $post->description = request('description');
-        // $post->save();
-        
-        // return redirect('/post');
-    
     }
 
     /**
@@ -94,6 +74,12 @@ class PostController extends Controller
     public function edit(string $id)
     {
         //
+        $categories = Category::all();
+        $post = Post::findOrFail($id);
+        return view('post.edit', [
+            'post' => $post,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -102,6 +88,21 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'category_id' => 'required|integer',
+            'title' => 'required',
+            'author' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
+            'short_desc' => 'required',
+            'description' => 'required',
+        ]);
+
+        $post = Post::find($id);
+        $request->file('image')->store('public/images');
+
+        $post->update($request->all());
+
+        return redirect('/post')->with('success', 'Post updated successfully');
     }
 
     /**
