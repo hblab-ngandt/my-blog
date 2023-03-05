@@ -75,6 +75,7 @@
           </div>
           <div style="height: 2vh"></div>
           <button type="submit" class="btn btn-primary">Save</button>
+          <a href="{{ route('post.index') }}" class="btn btn-danger">Cancel</a>
         </form>
       </div>
   </div>

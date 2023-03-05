@@ -47,15 +47,16 @@ class PostController extends Controller
             'short_desc' => 'required',
             'description' => 'required',
         ]);
-      
-        Post::create([
-            'category_id' => $request->category_id,
-            'title' => $request->title,
-            'author' => $request->author,
-            'image' => $request->file('image')->store('public/images'),
-            'short_desc' => $request->short_desc,
-            'description' => $request->description,
-        ]);
+
+        $input = $request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'public/images';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        Post::create($input);
 
         return redirect('/post')->with('success', 'Post updated successfully');
     }
@@ -85,7 +86,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         //
         $request->validate([
@@ -97,10 +98,18 @@ class PostController extends Controller
             'description' => 'required',
         ]);
 
-        $post = Post::find($id);
-        $request->file('image')->store('public/images');
-
-        $post->update($request->all());
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'public/images';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }else{
+            unset($input['image']);
+        }
+          
+        $post->update($input);
 
         return redirect('/post')->with('success', 'Post updated successfully');
     }
