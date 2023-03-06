@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', [StoreController::class, 'index']);
     Route::get('/store/view/{id}', [StoreController::class, 'getView']);
+    Route::get('/store/category/{id}', [StoreController::class, 'getCategory']);
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);
 });
