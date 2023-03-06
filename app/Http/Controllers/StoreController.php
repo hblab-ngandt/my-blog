@@ -28,7 +28,6 @@ class StoreController extends Controller
     }
     public function getCategory($id) {
         $post = DB::table('posts')->where('category_id', '=', $id)->simplePaginate(2);
-        $category_index = DB::table('categories')->where('category_id', '=', $id)->get();
         $categories = Category::all();
 
         return View::make('store.category')

@@ -28,9 +28,9 @@
             </div>
         </nav>
         <!-- Page content-->
-        <div class="container mt-5">
+        <!-- <div class="container mt-5"> -->
             @yield('content')
-        </div>
+        <!-- </div> -->
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

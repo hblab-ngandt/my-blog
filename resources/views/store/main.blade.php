@@ -1,6 +1,7 @@
-@extends('welcome')
+@extends('layouts.app')
 
 @section('content')
+<div class="container mt-5">
 <div class="row">
   <div class="col-lg-8">
       <!-- Post content-->
@@ -31,7 +32,6 @@
       <nav aria-label="Pagination">
         <div class="d-flex justify-content-center">
         {!! $posts->links() !!}
-      </div> -->
       </nav>
       
   </div>
@@ -70,5 +70,6 @@
           <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
       </div>
   </div>
+</div>
 </div>
 @endsection
