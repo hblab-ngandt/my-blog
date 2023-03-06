@@ -35,4 +35,16 @@ class StoreController extends Controller
             ->with('posts', $post)
             ->with('categories', $categories);
     }
+
+    public function getSearch(Request $request){
+        $keyword = $request->input('keyword');
+        $categories = Category::all();
+
+        if ($keyword != ''){
+            return View::make('store.search')
+                ->with('posts', DB::table('posts')->where('title', 'LIKE', '%'.$keyword.'%')->get())
+                ->with('categories', $categories)
+                ->with('keyword', $keyword);
+        }
+    }
 }
