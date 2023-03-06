@@ -14,10 +14,9 @@ class StoreController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
         return View::make('store.main')
             ->with('posts', Post::orderBy('created_at', 'desc')->get())
-            ->with('categories', $categories);
+            ->with('categories', Category::all());
     }
 
     public function getView($id) {
