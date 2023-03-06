@@ -27,6 +27,13 @@
         </section>
         @endforeach
       </article>
+
+      <nav aria-label="Pagination">
+        <div class="d-flex justify-content-center">
+        {!! $posts->links() !!}
+      </div> -->
+      </nav>
+      
   </div>
   <!-- Side widgets-->
   <div class="col-lg-4">

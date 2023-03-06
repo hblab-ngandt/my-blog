@@ -16,7 +16,7 @@ class StoreController extends Controller
     {
         //
         return View::make('store.main')
-            ->with('posts', Post::orderBy('created_at', 'desc')->get())
+            ->with('posts', Post::orderBy('created_at', 'desc')->simplePaginate(2))
             ->with('categories', Category::all());
     }
 
@@ -27,7 +27,7 @@ class StoreController extends Controller
         ->with('categories', Category::all());
     }
     public function getCategory($id) {
-        $post = DB::table('posts')->where('category_id', '=', $id)->get();
+        $post = DB::table('posts')->where('category_id', '=', $id)->simplePaginate(2);
         $category_index = DB::table('categories')->where('category_id', '=', $id)->get();
         $categories = Category::all();
 
@@ -42,7 +42,7 @@ class StoreController extends Controller
 
         if ($keyword != ''){
             return View::make('store.search')
-                ->with('posts', DB::table('posts')->where('title', 'LIKE', '%'.$keyword.'%')->get())
+                ->with('posts', DB::table('posts')->where('title', 'LIKE', '%'.$keyword.'%')->simplePaginate(2))
                 ->with('categories', $categories)
                 ->with('keyword', $keyword);
         }
