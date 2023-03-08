@@ -26,8 +26,15 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/store/search/', [StoreController::class, 'getSearch']);
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);
+    Route::resource('user', UserController::class);
 });
 
+Route::group(['middleware' => 'web'], function () {
 Auth::routes();
+    // Route::auth();
+    Route::get('/home', [HomeController::class, 'index']);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+// Auth::routes();
+
+// Route::get('/home', [HomeController::class, 'index'])->name('/home');

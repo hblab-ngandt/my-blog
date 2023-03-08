@@ -10,7 +10,7 @@
         @foreach ($posts as $post)
         <header class="mb-4">
           <!-- Post title-->
-          <a href="/store/view/{{$post->id}}"  class="text-decoration-none" >
+          <a href="/store/view/{{ $post->id }}"  class="text-decoration-none" >
             <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
           </a>
           <!-- Post meta content-->
