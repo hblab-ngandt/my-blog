@@ -6,6 +6,11 @@
       <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
       <li class="breadcrumb-item active">Static Navigation</li>
   </ol>
+@if (session('user_update'))
+    <div class="alert alert-success">
+        {{ session('user_update') }}
+    </div>
+@endif
   <div class="card mb-4">
       <div class="card-body">
           <p class="mb-0">

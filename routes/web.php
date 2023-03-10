@@ -27,6 +27,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);
     Route::resource('user', UserController::class);
+    Route::get('/user/{id}/edit', [UserController::class, 'update']);
 });
 
 Route::group(['middleware' => 'web'], function () {
